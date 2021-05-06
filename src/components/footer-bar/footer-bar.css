@@ -20,7 +20,7 @@
 }
 
 .footer-bar-container .footer-button:last-of-type {
-  margin-right: none;
+  margin-right: 0;
 }
 
 .footer-bar-container .footer-button svg {
