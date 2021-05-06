@@ -121,8 +121,16 @@ const Inicio = () => {
                     }
                 </section>
                 <section className='container result-container section'>
-                    <h2>Resultados</h2>
-                    <ResultGrid song={song} playing={playing} play={setSong} togglePlay={togglePlay} data={results} />
+                    {
+                        results.length > 0
+                            ?
+                            <>
+                                <h2>Resultados</h2>
+                                <ResultGrid song={song} playing={playing} play={setSong} togglePlay={togglePlay} data={results} />
+                            </>
+                            :
+                            <h2>Para comenzar, haz una búsqueda</h2>
+                    }
                 </section>
             </div>
             <footer>
