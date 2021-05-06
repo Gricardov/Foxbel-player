@@ -39,6 +39,7 @@
     display: block;
     padding-left: 20px;
     padding-right: 20px;
+    max-width: 200px;
   }
 }
 
@@ -102,6 +103,7 @@
 
 @media (min-width: 768px) {
   .footer-player .volume-controls .speaker {
+    display: block;
     margin-left: 40px;
   }
 }
@@ -118,6 +120,7 @@
   height: 6px;
   border-radius: 100px;
   background-color: white;
+  cursor: pointer;
 }
 
 .footer-player .volume-controls .control .knob {
@@ -126,4 +129,5 @@
   height: 20px;
   border-radius: 50%;
   background-color: white;
+  cursor: pointer;
 }

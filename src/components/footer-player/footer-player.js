@@ -1,9 +1,12 @@
 import React, { useRef, useState, useEffect } from 'react';
+import Logo1x from '../../img/foxbel-music-white-icon.png';
+import Logo2x from '../../img/foxbel-music-white-icon@2x.png';
+import Logo3x from '../../img/foxbel-music-white-icon@3x.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faStepBackward, faStepForward, faVolumeOff } from '@fortawesome/free-solid-svg-icons';
+import { faPause, faPlay, faStepBackward, faStepForward, faVolumeMute, faVolumeOff } from '@fortawesome/free-solid-svg-icons';
 import './footer-player.css';
 
-export const Player = ({ img }) => {
+export const Player = ({ song, playing, togglePlay, toggleMute, muted, goNext, goPrev, setVolume }) => {
 
     const VolumeControl = ({ setPercentage }) => {
 
@@ -22,7 +25,7 @@ export const Player = ({ img }) => {
         // Coordinates
         const [mouseAbsX, setMouseAbsX] = useState(0);
         const [mouseRelX, setMouseRelX] = useState();
-        const [knobX, setKnobX] = useState(15);
+        const [knobX, setKnobX] = useState(50);
 
         const reset = () => {
             setMoving(false);
@@ -33,8 +36,9 @@ export const Player = ({ img }) => {
             var e = evt.target;
             var dim = e.getBoundingClientRect();
             var x = evt.clientX - dim.left;
-            setKnobX(x - (knobWith / 2));
-            setPercentage((knobX + (knobWith / 2)) * 100 / trackWidth);
+            const knobX = x - (knobWith / 2)
+            setKnobX(knobX);
+            setPercentage((knobX + (knobWith / 2) * 100 / trackWidth))
         }
 
         const updMouseOnKnobCoordinates = (evt) => {
@@ -68,8 +72,7 @@ export const Player = ({ img }) => {
         }, [refTrack]);
 
         return (
-            <div
-                className='control'>
+            <div className='control'>
                 <div
                     ref={refKnob}
                     onMouseMove={updMouseOnKnobCoordinates}
@@ -87,22 +90,34 @@ export const Player = ({ img }) => {
 
     return (
         <div className='footer-player-container'>
-            <img src={img} alt='artist-photo' className='artist-photo' />
+            <img src={song?.album?.cover_big || Logo2x} alt='artist-photo' className='artist-photo' />
             <div className='footer-player'>
                 <div className='artist-info'>
-                    <h4 className='clamp clamp-1'>Canción</h4>
-                    <p className='clamp clamp-1'>Artista - Álbum</p>
+                    <h4 className='clamp clamp-1'>{song?.title}</h4>
+                    <p className='clamp clamp-1'>{song?.artist?.name} - {song?.album?.title}</p>
                 </div>
                 <div className='main-buttons'>
-                    <FontAwesomeIcon icon={faStepBackward} className='step' />
-                    <div className='circle'>
-                        <FontAwesomeIcon icon={faPlay} className='play' />
+                    <FontAwesomeIcon onClick={goPrev} icon={faStepBackward} className='step' />
+                    <div className='circle' onClick={togglePlay}>
+                        {
+                            playing
+                                ?
+                                <FontAwesomeIcon icon={faPause} className='play' />
+                                :
+                                <FontAwesomeIcon icon={faPlay} className='play' />
+                        }
                     </div>
-                    <FontAwesomeIcon icon={faStepForward} className='step' />
+                    <FontAwesomeIcon onClick={goNext} icon={faStepForward} className='step' />
                 </div>
                 <div className='volume-controls'>
-                    <VolumeControl setPercentage={(val) => console.log(val)} />
-                    <FontAwesomeIcon icon={faVolumeOff} className='speaker' />
+                    <VolumeControl setPercentage={setVolume} />
+                    {
+                        muted
+                            ?
+                            <FontAwesomeIcon onClick={toggleMute} icon={faVolumeMute} className='speaker' />
+                            :
+                            <FontAwesomeIcon onClick={toggleMute} icon={faVolumeOff} className='speaker' />
+                    }
                 </div>
             </div>
         </div>

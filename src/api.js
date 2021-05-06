@@ -1,15 +1,13 @@
-export const request = async (route, method = 'GET', data) => {
-    try {
-        const result = await fetch(route, {
-            method: method,
-            body: data ? JSON.stringify(data) : null
+import jsonp from 'jsonp';
+
+export const requestDeezer = async (route) => {
+    return new Promise((resolve, reject) => {
+        jsonp(`${route}&output=jsonp`, { name: 'defaultName' }, (error, data) => {
+            if (error) {
+                reject(error);
+            } else {
+                resolve(data);
+            }
         });
-        if (result.status == '200') {
-            return { data: await result.json() };
-        } else {
-            return { error: result.statusText || 'No se encontró el endpoint' };
-        }
-    } catch (error) {
-        return { error };
-    }
+    });
 }

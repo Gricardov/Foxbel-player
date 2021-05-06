@@ -22,7 +22,7 @@ export const Sidebar = () => {
 
     return (
         <nav className='sidebar'>
-            <img className='logo' srcSet={`${Logo1x}, ${Logo2x} 2x, ${Logo3x} 3x`} src={Logo3x} alt='logo' />
+            <img className='logo' srcSet={`${Logo3x}, ${Logo2x} 2x, ${Logo1x} 3x`} src={Logo2x} alt='logo' />
             <div className='sidebar-nav'>
                 <h3>Mi libreria</h3>
                 {

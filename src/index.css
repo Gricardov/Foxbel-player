@@ -173,6 +173,10 @@ main {
   }
 }
 
+.result-container {
+  margin-bottom: 200px;
+}
+
 .result-container h2 {
   font-size: 2.2rem;
   color: #E86060;
