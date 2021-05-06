@@ -1,0 +1,88 @@
+.main-card {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .main-card {
+        flex-direction: row;
+        height: 250px;
+        width: 100%;
+    }
+}
+
+.main-card .play-container {
+    display: none;
+}
+
+@media (min-width: 768px) {
+    .main-card .play-container {
+        max-height: 250px;
+        display: inline-block;
+        position: relative;
+    }    
+}
+
+.main-card .play-container .play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 7.2rem;
+    color: white;
+    cursor: pointer;
+}
+
+.main-card .play-container img {
+    width: 250px;
+    height: 250px;
+}
+
+.main-card .artist-data {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding: 40px 32px 25px 32px;
+}
+
+.main-card .artist-data h3 {
+    color: white;
+    font-size: 2.2rem;
+}
+
+.main-card .artist-data .details {
+    color: white;
+    font-size: 1.4rem;
+    font-weight: 400;
+}
+
+.main-card .artist-data .details span {
+    margin-left: 16px;
+    color: #662323;
+    font-size: 1rem;
+}
+
+.main-card .artist-data .description {
+    margin-top: 20px;
+    color: white;
+    line-height: 20, 19px;
+    font-size: 1.2rem;
+}
+
+.main-card .artist-data .button-container {
+    display: flex;
+    margin-top: 20px;
+}
+
+@media (min-width: 768px) {
+    .main-card .artist-data .button-container {
+        margin-top: auto;
+    }
+}
+
+.main-card .artist-data .button-container .button {
+    margin-right: 20px;
+}

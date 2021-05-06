@@ -1,0 +1,35 @@
+.footer-bar-container {
+  display: flex;
+  background-color: rgb(49, 49, 49);
+  color: white;
+  height: 65px;
+}
+
+.footer-bar-container .footer-button {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+}
+
+.footer-bar-container .footer-button {
+  border-right: 1px solid rgb(68, 68, 68);  
+
+}
+
+.footer-bar-container .footer-button:last-of-type {
+  margin-right: none;
+}
+
+.footer-bar-container .footer-button svg {
+  margin-bottom: 6px;
+  font-size: 2rem;
+}
+
+@media (min-width: 891px) {
+  .footer-bar-container {
+    display: none;
+  }
+}
