@@ -23,13 +23,13 @@ const Inicio = () => {
     const [playing, setPlaying] = useState(false);
     const [muted, setMuted] = useState(false);
 
-    const search = (text, endpoint = 'http://api.deezer.com/search?q=track:', retry = true) => {
+    const search = (text, endpoint = 'https://api.deezer.com/search?q=track:', retry = true) => {
         requestDeezer(`${endpoint}"${text}"`)
             .then(data => {
                 if (data.data.length > 0) {
                     setResults(data.data);
                 } else if (retry) {
-                    search(text, 'http://api.deezer.com/search?q=album:', false);
+                    search(text, 'https://api.deezer.com/search?q=album:', false);
                 } else {
                     setResults([]);
                 }
