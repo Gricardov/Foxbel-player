@@ -72,7 +72,10 @@ export const Player = ({ song, playing, togglePlay, toggleMute, muted, goNext, g
         }, [refTrack]);
 
         return (
-            <div className='control'>
+            <div
+                className='control'
+                onMouseDown={setKnobPosition}
+            >
                 <div
                     ref={refKnob}
                     onMouseMove={updMouseOnKnobCoordinates}
@@ -82,7 +85,6 @@ export const Player = ({ song, playing, togglePlay, toggleMute, muted, goNext, g
                     style={{ left: knobX }} className='knob' />
                 <div
                     ref={refTrack}
-                    onMouseDown={setKnobPosition}
                     className='track' />
             </div>
         )
